@@ -51,12 +51,12 @@ int main(void){
     }else{                  //bをaで割るとき
     surplus = b % a;
         while(surplus =! 0){
-            //surplus = b % a;
+            surplus = b % a;
+            b = a;
             if(surplus == 0){
                 break;
             }
-            a = b;
-            surplus = a;
+            a = surplus;
     }
         printf("最大公約数は%dです",a);
     }
