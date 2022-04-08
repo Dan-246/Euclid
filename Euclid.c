@@ -28,12 +28,16 @@
 #include <stdio.h>
 int main(void){
     int a,b;
+    int first_a, first_b;
     int gcd;       /*最大公約数*/
 
     printf("1つ目の整数値を入力してください\na:");
     scanf("%d",&a);
     printf("2つ目の整数値を入力してください\nb:");
     scanf("%d",&b);
+
+    first_a = a;
+    first_b = b;
     
     int surplus;
     if(a>b)        //bよりaが大きいとき（aをbで割るとき）
@@ -47,7 +51,10 @@ int main(void){
             }
             b = surplus;
         }
-        printf("最大公約数は%dです",b);
+        printf("最大公約数は%dです\n",b);
+        if(b == 1){
+            printf("2数 %d , %d は互いに素となります",a,b);
+        }
     }else{                  //bをaで割るとき
     surplus = b % a;
         while(surplus =! 0){
@@ -58,7 +65,10 @@ int main(void){
             }
             a = surplus;
     }
-        printf("最大公約数は%dです",a);
+        printf("最大公約数は%dです\n",b);
+        if(a == 1){
+            printf("2数 %d , %d は互いに素となります",first_a,first_b);
+        }
     }
     return 0;
 }
