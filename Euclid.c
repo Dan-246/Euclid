@@ -27,52 +27,64 @@
 
 #include <stdio.h>
 int main(void){
+
     int a,b;
     int first_a, first_b;
     int gcd;       /*最大公約数*/
+    int break_control;
+    break_control = 0;  /*終了条件*/
 
-    printf("1つ目の整数値を入力してください\na:");
-    scanf("%d",&a);
-    printf("2つ目の整数値を入力してください\nb:");
-    scanf("%d",&b);
+    while(break_control == 0){
+        printf("1つ目の整数値を入力してください\na:");
+        scanf("%d",&a);
+        printf("2つ目の整数値を入力してください\nb:");
+        scanf("%d",&b);
 
-    first_a = a;
-    first_b = b;
-    
-    int surplus;
-    if(a>b)        //bよりaが大きいとき（aをbで割るとき）
-    {
-        surplus = a % b;
-        while(surplus =! 0){
+        first_a = a;
+        first_b = b;
+            
+        int surplus;
+        if(a>b){        //bよりaが大きいとき（aをbで割るとき）
             surplus = a % b;
-            a = b;
-            if(surplus==0){
-                break;
+            while(surplus =! 0){
+                surplus = a % b;
+                a = b;
+                if(surplus==0){
+                    break;
+                }
+                b = surplus;
             }
-            b = surplus;
-        }
-        printf("最大公約数は%dです\n",b);
-        if(b == 1){
-            printf("2数 %d , %d は互いに素となります",a,b);
-        }
-    }else{                  //bをaで割るとき
-    surplus = b % a;
-        while(surplus =! 0){
+            printf("最大公約数は%dです\n",b);
+            if(b == 1){
+                printf("2数 %d , %d は互いに素となります\n",first_a,first_b);
+                printf("このプログラムを続行しますか？\n続行なら0終了なら1を入力してください : ");
+                scanf("%d", &break_control);
+            }
+            else{
+                printf("このプログラムを続行しますか？\n続行なら0終了なら1を入力してください : ");
+                scanf("%d", &break_control);
+            }
+        }else{                  //bをaで割るとき
             surplus = b % a;
-            b = a;
-            if(surplus == 0){
-                break;
+            while(surplus =! 0){
+                surplus = b % a;
+                b = a;
+                if(surplus == 0){
+                    break;
+                }
+                    a = surplus;
             }
-            a = surplus;
-    }
-        printf("最大公約数は%dです\n",b);
-        if(a == 1){
-            printf("2数 %d , %d は互いに素となります",first_a,first_b);
+            printf("最大公約数は%dです\n",b);
+            if(a == 1){
+                printf("2数 %d , %d は互いに素となります\n",first_a,first_b);
+                printf("このプログラムを続行しますか？\n続行なら0終了なら1を入力してください : ");
+                scanf("%d", &break_control);
+            }
+            else{
+                printf("このプログラムを続行しますか？\n続行なら0終了なら1を入力してください : ");
+                scanf("%d", &break_control);
+            }
         }
-    }
+    }    
     return 0;
 }
-
-
-
-
